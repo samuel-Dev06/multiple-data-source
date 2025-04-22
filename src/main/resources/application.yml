@@ -1,18 +1,23 @@
+server:
+  port: 8880
 spring:
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-
   datasource:
     mysql:
-      url: jdbc:mysql://localhost:3306/testdb_mysql
+      jdbc-url: jdbc:mysql://localhost:3306/testdb_mysql
       username : root
       password : password
       driver-class-name: com.mysql.cj.jdbc.Driver
+      hikari:
+        pool-name: mysqlPool
 
     postgres:
-      url: jdbc:postgresql://localhost:5432/testdb_postgres
+      jdbc-url: jdbc:postgresql://localhost:5432/testdb_postgres
       username: postgres
       password: password
       driver-class-name: org.postgresql.Driver
+      hikari:
+        pool-name: postgresPool
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
